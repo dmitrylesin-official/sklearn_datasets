@@ -84,7 +84,7 @@ The tuned XGBoost model demonstrates excellent classification performance, achie
 
 ## 📬 Author
 
-**Telegram:** @lesin_official
+**Telegram:** @dmitrylesin
 
 **Email:** dmitrylesin_official@gmail.com
 
