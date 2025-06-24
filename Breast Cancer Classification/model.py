@@ -5,6 +5,16 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename='log.txt',
+    filemode='a',
+    format='%(astime)s - %(levelname)s - %(message)s'
+)
+
+logging.info('Dataset loaded successfully')
 data = load_breast_cancer()
 df = pd.DataFrame(data.data, columns=data.feature_names)
 df['target'] = data.target
@@ -15,8 +25,10 @@ df.info()
 X = df.drop('target', axis=1)
 y = df['target']
 
+logging.info('Split into train and test. Train size: %d, Test size: %d', len(X_train), len(X_test))
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+logging.info('Training model: XGBClassifier')
 model = XGBClassifier(random_state=42)
 
 params = [{
